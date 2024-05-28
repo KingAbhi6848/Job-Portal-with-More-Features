@@ -8,7 +8,7 @@ export const checkUser = (req,res,next)=>{
     // Set jobseeker role only if recruiter is not set
     res.locals.role = 'jobseeker';
   } else {
-    // No role identified, set to null (optional)
+    // No role identified, set to null 
     res.locals.role = null;
   }
 

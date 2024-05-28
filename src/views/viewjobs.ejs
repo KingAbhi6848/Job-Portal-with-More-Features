@@ -34,9 +34,12 @@
                         </ul>
                         <p class="card-text"><%= job.skillsRequired %></p>
                         <p class="card-text"><%= job.experience %> years of experience required</p>
+
+                        <% if(role != 'recruiter') { %> 
                         <a href="/apply/<%= job.jobId %>" class="btn btn-primary">Apply</a>
-                        <a href="#" class="btn btn-secondary">View More</a>
-                        <% if(role == 'recruiter') { %> 
+                        <% } %>
+                        <!-- <a href="#" class="btn btn-secondary">View More</a> -->
+                        <% if(role == 'recruiter'  && recuriter == job.recuriterId) { %> 
                             <a href="/applicants/<%= job.jobId %>">View Applicants</a>
                         <% } %>
                     </div>
