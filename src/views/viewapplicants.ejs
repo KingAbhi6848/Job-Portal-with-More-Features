@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <h1 class="text-center mb-5">View Applicants</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Resume</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% applicants.forEach(applicant => { %>
+                <tr>
+                    <td><%= applicant.name %></td>
+                    <td><%= applicant.email %></td>
+                    <td><a href="<%= applicant.resume %>" target="_blank" class="btn btn-primary">View Resume</a></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>

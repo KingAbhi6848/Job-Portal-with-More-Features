@@ -1,0 +1,62 @@
+<div style="display: block;">
+    <h4 style="background-color: orange;">You last Visit on :- <%= lastVisit %></h4>
+</div>
+
+<form action="/search" method="post" class="form-inline justify-content-center" style="margin-top: -80px; display: inline-block; position: fixed; height: 30px; margin-left: 895px;">
+    <div class="form-group mx-sm-3 mb-2" style="display: inline-block;">
+        <input type="text" id="search" class="form-control" name="searchTerm" placeholder="Enter search term" required style="display: inline-block; height: 30px; width: 200px; font-size: 14px;" onkeyup="filterCards()">
+        <button type="submit" class="btn btn-primary mb-2" style="height: 30px; font-size: 14px; display: inline-block; margin-top: 5px;">Search</button>
+    </div>
+</form>
+
+<% if (Array.isArray(jobs) && jobs.length > 0) { %>
+<br><br>
+<div class="container">
+    <div class="row" id="jobCards">
+        <% jobs.forEach((job, index) => { %>
+            <div class="col-md-6 job-card" id="jobCard-<%= index %>">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title titleofjob"><%= job.jobTitle %></h5>
+                        <% if(role == 'recruiter' && recuriter == job.recuriterId) { %> 
+                            <!-- Edit and Delete Buttons -->
+                            <div class="btn-group btn-group-sm" style="position: absolute; top: 10px; right: 10px;">
+                                <a href="/edit/<%= job.jobId %>" class="btn btn-warning">Edit</a>
+                                <a style="margin-left: 1%;" href="/delete/<%= job.jobId %>" class="btn btn-danger">Delete</a>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><b><%= job.companyName %></b></p>
+                        <p class="card-text"><%= job.location %></p>
+                        <ul>
+                            <li><%= job.jobDescription %></li>
+                        </ul>
+                        <p class="card-text"><%= job.skillsRequired %></p>
+                        <p class="card-text"><%= job.experience %> years of experience required</p>
+                        <a href="/apply/<%= job.jobId %>" class="btn btn-primary">Apply</a>
+                        <a href="#" class="btn btn-secondary">View More</a>
+                        <% if(role == 'recruiter') { %> 
+                            <a href="/applicants/<%= job.jobId %>">View Applicants</a>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<% if (jobs.length > 4) { %>
+    <!-- Additional content for when there are more than 4 jobs -->
+<% } %>
+
+<% } else { %>
+<div class="container">
+    <h1>No Jobs Available</h1>
+    <div class="text-center">
+        <a href="#" class="btn btn-secondary">Back to Job Listings</a>
+    </div>
+</div>
+<% } %> 
+
+<script src="/js/main.js"></script>

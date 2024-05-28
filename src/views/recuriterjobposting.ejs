@@ -1,0 +1,33 @@
+<section class="mt-5">
+    <div class="container">
+        <h1>Job Posting Form</h1>
+        <form method="post" action="/jobposting">
+            <input type="hidden" name="jobId" id="jobId">
+            <div class="mb-3">
+                <label for="jobTitle" class="form-label">Job Title</label>
+                <input type="text" class="form-control" id="jobTitle" name="jobTitle" placeholder="Enter Job Title" required>
+            </div>
+            <div class="mb-3">
+                <label for="companyName" class="form-label">Company Name</label>
+                <input type="text" class="form-control" id="companyName" name="companyName" placeholder="Enter Company Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location (City, State)</label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Enter Location" required>
+            </div>
+            <div class="mb-3">
+                <label for="jobDescription" class="form-label">Job Description</label>
+                <textarea class="form-control" id="jobDescription" name="jobDescription" rows="5" placeholder="Enter Job Description" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="skillsRequired" class="form-label">Skills Required (separate by comma)</label>
+                <input type="text" class="form-control" id="skillsRequired" name="skillsRequired" placeholder="Enter Skills Required" required>
+            </div>
+            <div class="mb-3">
+                <label for="experience" class="form-label">Experience (Years)</label>
+                <input type="number" class="form-control" id="experience" name="experience" placeholder="Enter Experience" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Job Posting</button>
+        </form>
+    </div>
+</section>

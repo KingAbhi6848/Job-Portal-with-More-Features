@@ -1,0 +1,45 @@
+/* Ensures the video covers the entire background */
+*{
+    /* color: white; */
+    /* background-color: black; */
+}
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+  
+  .video-background video {
+    min-height: 100%;
+    min-width: 100%;
+    object-fit: cover;
+  }
+  
+  /* Ensures content is placed over the video */
+  .content-overlay {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+  }
+  
+  /* Add some styles to your sections */
+  .hero {
+    padding: 100px 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .benefits {
+    padding: 50px 0;
+    background: rgba(255, 255, 255, 0.8);
+    color: #000;
+  }
+  
+  .call-to-action {
+    padding: 50px 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
