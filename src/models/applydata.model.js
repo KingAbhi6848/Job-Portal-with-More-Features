@@ -10,31 +10,38 @@ export default class Apply {
         this.id = id;
     }
 
+    // Method to add application data
     static data(data,filename,jobId, jobSeekerId, id) {
         const newApply = new Apply(data, '/images/' + filename, id);
         newApply.jobId.push(jobId);
         newApply.jobSeekerId.push(jobSeekerId);
-         const jobData = RecuriterModel.getById(jobId);
-         jobData.applicants.push(id);
-         console.log(jobData);
-        applyData.push(newApply);
+        
+        // Update the job data with the applicant's ID
+        const jobData = RecuriterModel.getById(jobId);
+        jobData.applicants.push(id);
+        console.log(jobData);
 
+        // Add the new application to the applyData array
+        applyData.push(newApply);
 
         return applyData;
     }
+
+    // Method to get all applications
     static getAll(){
         return applyData;
     }
 
+    // Method to get applicants by job listing
     static getApplicantsByJobList(Data){
         const applicants =[];
         Data.applicants.forEach(applicant=>{
-
-         applicants.push( applyData.find(applicantId => applicantId.id == applicant)) ;
-        })
+            // Find applicants by ID and push them into the array
+            applicants.push(applyData.find(applicantId => applicantId.id == applicant));
+        });
         return applicants;
     }
 }
 
+// Array to store application data
 const applyData = [];
-
